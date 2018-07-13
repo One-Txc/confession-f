@@ -19,9 +19,13 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "assets/lib/layui/css/layui.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "assets/lib/jquery-3.3.1.min.js",
+        "assets/lib/layui/layui.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

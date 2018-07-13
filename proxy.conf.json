@@ -1,0 +1,14 @@
+{
+  "css/**": {
+    "target": "http://localhost:888"
+  },
+  "lay/**": {
+    "target": "http://localhost:888"
+  },
+  "assets/**": {
+    "target": "http://localhost:888"
+  },
+  "/**": {
+    "target": "http://localhost:888/"
+  }
+}

@@ -40,3 +40,8 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+/*.log
+.vscode/launch.json
+.vscode/launch.json
+.vscode/settings.json
+/*.zip
