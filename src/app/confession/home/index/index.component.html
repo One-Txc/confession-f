@@ -4,23 +4,41 @@
 
 
 
-<body style="background-color: #2E2D3C;">
 <div id="body-div" class="layui-card layui-row layui-col-space15" style="text-align: center;">
   <div class="layui-col-md12 layui-card-header" style="height: auto">
-    <span id="titleId" style="font-family: sans-serif;font-weight:bold;font-size:20px;">**************************</span>
+    <span id="titleId" style="font-family: sans-serif;font-weight:bold;font-size:20px;">{{title}}</span>
   </div>
   <div style="">
     <div style="display: inline;width: 50%" >
-      <span id="questionId" style="margin: auto;font-family: sans-serif;font-weight:bold;font-size:14px;">要不要一起去漫展啊?</span>
+      <span id="questionId" style="margin: auto;font-family: sans-serif;font-weight:bold;font-size:14px;">{{question}}</span>
     </div>
     <div style="display: inline;width: 50%" >
-      <!--<img src="image/a.jpg" style="width: 50%;">-->
-      <img src="/assets/img/a.jpg" style="width: 50%;">
+      <img src="{{pictrueUrl}}" style="width: 50%;">
     </div>
   </div>
   <div style="">
-    <button class="layui-btn  layui-btn-lg layui-btn-warm" id="okButton" style="height: 100px;width: 200px" onclick="okButtonClick()">好好</button>
-    <button class="layui-btn layui-btn-danger" onclick="noButtonClick()" id="noButton">不好</button>
+    <button class="layui-btn  layui-btn-lg layui-btn-warm" id="okButton" style="height: 100px;width: 200px" (click)="okButtonClick()">好好</button>
+    <button class="layui-btn layui-btn-danger" (click)="noButtonClick()" id="noButton">不好</button>
   </div>
 </div>
-</body>
+
+
+
+
+
+
+<div id="dzh-desc" class="layui-card" style="display: none">
+  <div class="layui-card-header">定制化说明(认真看下呗)</div>
+  <div class="layui-card-body">
+    <a href="http://111.230.142.95:666/?1">男生版</a><br>
+    <a href="http://111.230.142.95:777/?1">女生版</a><br>
+    http://111.230.142.95:666/?userName=<span style="color: red">标题</span><br>
+    http://111.230.142.95:777/?userName=<span style="color: red">标题</span><br>
+    1.将上面的红色中文 替换成自己想要的文字就可以了,第一个为男生版本，第二个为女生版本,有细微不同<br><br>
+    2.不会的尽量自己尝试一下吧,<span style="color: red">定制版的不会有<!--()-->(求赞)广告和底部的说明</span><br>
+    3.还是不会的可以 最右 上私信我(没回的话可能忘了,可以多私信几个).还有请给个赞.将酱紫<br>
+    4.有好的建议也可以私信我呀
+    <!--最右点赞地址：https://share.izuiyou.com/detail/54628372?zy_to=applink&to=applink-->
+  </div>
+</div>
+
