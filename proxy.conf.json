@@ -1,14 +1,5 @@
 {
-  "css/**": {
-    "target": "http://localhost:4288"
-  },
-  "lay/**": {
-    "target": "http://localhost:4288"
-  },
-  "assets/**": {
-    "target": "http://localhost:4288"
-  },
-  "/**": {
-    "target": "http://localhost:4288/"
+  "/confession/**": {
+    "target": "http://localhost:8080/"
   }
 }

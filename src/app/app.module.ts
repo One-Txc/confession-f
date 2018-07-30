@@ -6,14 +6,25 @@ import { AppRoutingModule } from './app-routing.module';
 import {IndexComponent} from "./confession/home/index/index.component";
 import {ServiceURLInterceptor} from "./core/service-url.interceptor";
 import {RouterModule} from "@angular/router";
-import {HttpModule} from "@angular/http";
-import {CommonModule} from "@angular/common";
+import {HttpModule, RequestOptions, XHRBackend} from "@angular/http";
+import {CommonModule, HashLocationStrategy, LocationStrategy} from "@angular/common";
 import {Question01Component} from "./confession/home/question-01/question-01.component";
 import {Question02Component} from "./confession/home/question-02/question-02.component";
 import {Question03Component} from "./confession/home/popup/question-03/question-03.component";
 import {HahaComponent} from "./confession/home/popup/haha/haha.component";
 import {OkComponent} from "./confession/home/popup/ok/ok.component";
 import {XingxingComponent} from "./confession/home/popup/xingxing/xingxing.component";
+import {ConfigService} from "./service/config.service";
+import {ConfigAddComponent} from "./confession/home/config/config-add/config-add.component";
+import {InterceptorService} from "ng2-interceptors";
+
+
+export function interceptorFactory(xhrBackend: XHRBackend, requestOptions: RequestOptions) {
+  const service = new InterceptorService(xhrBackend, requestOptions);
+  service.addInterceptor(new ServiceURLInterceptor());
+  // Add interceptors here with service.addInterceptor(interceptor)
+  return service;
+}
 
 @NgModule({
   declarations: [
@@ -24,7 +35,8 @@ import {XingxingComponent} from "./confession/home/popup/xingxing/xingxing.compo
     Question03Component,
     HahaComponent,
     OkComponent,
-    XingxingComponent
+    XingxingComponent,
+    ConfigAddComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +46,15 @@ import {XingxingComponent} from "./confession/home/popup/xingxing/xingxing.compo
     AppRoutingModule,
   ],
   providers: [
-    ServiceURLInterceptor
+    ServiceURLInterceptor,ConfigService,
+    {
+      provide: LocationStrategy, useClass: HashLocationStrategy
+    },
+    {
+      provide: InterceptorService,
+      useFactory: interceptorFactory,
+      deps: [XHRBackend, RequestOptions]
+    }
   ],
   bootstrap: [AppComponent]
 })
