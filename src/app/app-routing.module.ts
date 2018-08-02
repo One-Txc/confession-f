@@ -8,6 +8,7 @@ import {HahaComponent} from "./confession/home/popup/haha/haha.component";
 import {OkComponent} from "./confession/home/popup/ok/ok.component";
 import {XingxingComponent} from "./confession/home/popup/xingxing/xingxing.component";
 import {ConfigAddComponent} from "./confession/home/config/config-add/config-add.component";
+import {MemoirsComponent} from "./confession/home/memoirs/memoirs.component";
 
 /*const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -32,6 +33,7 @@ const routes: Routes = [
   {path: 'ok', component: OkComponent},
   {path: 'xingxing', component: XingxingComponent},
   {path: 'config/add', component: ConfigAddComponent},
+  {path: 'memoris', component: MemoirsComponent},
 
 ];
 

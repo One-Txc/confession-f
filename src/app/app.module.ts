@@ -17,6 +17,7 @@ import {XingxingComponent} from "./confession/home/popup/xingxing/xingxing.compo
 import {ConfigService} from "./service/config.service";
 import {ConfigAddComponent} from "./confession/home/config/config-add/config-add.component";
 import {InterceptorService} from "ng2-interceptors";
+import {MemoirsComponent} from "./confession/home/memoirs/memoirs.component";
 
 
 export function interceptorFactory(xhrBackend: XHRBackend, requestOptions: RequestOptions) {
@@ -36,7 +37,8 @@ export function interceptorFactory(xhrBackend: XHRBackend, requestOptions: Reque
     HahaComponent,
     OkComponent,
     XingxingComponent,
-    ConfigAddComponent
+    ConfigAddComponent,
+    MemoirsComponent
   ],
   imports: [
     CommonModule,
