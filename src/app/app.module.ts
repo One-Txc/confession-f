@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +19,7 @@ import {ConfigService} from "./service/config.service";
 import {ConfigAddComponent} from "./confession/home/config/config-add/config-add.component";
 import {InterceptorService} from "ng2-interceptors";
 import {MemoirsComponent} from "./confession/home/memoirs/memoirs.component";
+import {AnniComponent} from "./confession/home/popup/anni/anni.component";
 
 
 export function interceptorFactory(xhrBackend: XHRBackend, requestOptions: RequestOptions) {
@@ -38,7 +40,8 @@ export function interceptorFactory(xhrBackend: XHRBackend, requestOptions: Reque
     OkComponent,
     XingxingComponent,
     ConfigAddComponent,
-    MemoirsComponent
+    MemoirsComponent,
+    AnniComponent
   ],
   imports: [
     CommonModule,
@@ -46,6 +49,7 @@ export function interceptorFactory(xhrBackend: XHRBackend, requestOptions: Reque
     //RouterModule,
     BrowserModule,
     AppRoutingModule,
+    FormsModule
   ],
   providers: [
     ServiceURLInterceptor,ConfigService,

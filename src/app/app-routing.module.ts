@@ -9,6 +9,7 @@ import {OkComponent} from "./confession/home/popup/ok/ok.component";
 import {XingxingComponent} from "./confession/home/popup/xingxing/xingxing.component";
 import {ConfigAddComponent} from "./confession/home/config/config-add/config-add.component";
 import {MemoirsComponent} from "./confession/home/memoirs/memoirs.component";
+import {AnniComponent} from "./confession/home/popup/anni/anni.component";
 
 /*const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -29,8 +30,10 @@ const routes: Routes = [
   {path: 'q-01', component: Question01Component},
   {path: 'q-02', component: Question02Component},
   {path: 'q-03', component: Question03Component},
-  {path: 'haha', component: HahaComponent},
+  {path: 'mjg', component: HahaComponent},
   {path: 'ok', component: OkComponent},
+  {path: 'aini', component: AnniComponent},
+  {path: 'szm', component: OkComponent},
   {path: 'xingxing', component: XingxingComponent},
   {path: 'config/add', component: ConfigAddComponent},
   {path: 'memoris', component: MemoirsComponent},

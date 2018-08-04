@@ -22,11 +22,13 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "assets/lib/layui/css/layui.css"
+        "assets/lib/layui/css/layui.css",
+        "assets/lib/bootstrap/css/bootstrap.min.css"
       ],
       "scripts": [
         "assets/lib/jquery-3.3.1.min.js",
-        "assets/lib/layui/layui.js"
+        "assets/lib/layui/layui.js",
+        "assets/lib/bootstrap/js/bootstrap.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
