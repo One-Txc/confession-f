@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  confessionUrlPrefix:"confession"
+  confessionUrlPrefix:"confession",
+  url:"http://localhost:4288/"
 };

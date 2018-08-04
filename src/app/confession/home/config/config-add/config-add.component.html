@@ -81,12 +81,13 @@
             <div class="col-lg-4 col-md-6">
               <div class="input-group" style="width: 100%">
                 <select class="form-control" [(ngModel)]="config.path">
-                  <option value="1">我属什么的?</option>
-                  <option value="2">我喜欢吃什么?</option>
-                  <option value="3">古诗词填空</option>
-                  <option value="4">图片-爱你</option>
-                  <option value="5">图片-没结果</option>
-                  <option value="6">图片-少做梦</option>
+                  <option value="#/q-01">我属什么的?</option>
+                  <option value="#/q-02">我喜欢吃什么?</option>
+                  <option value="#/q-03">古诗词填空</option>
+                  <option value="#/aini">图片-爱你</option>
+                  <option value="#/mjg">图片-没结果</option>
+                  <option value="#/lagou">图片-拉钩钩</option>
+                  <option value="#/xingxing">拉钩-少做梦</option>
                 </select>
               </div>
             </div>
@@ -142,13 +143,13 @@
             <div class="col-lg-4 col-md-6">
               <div class="input-group" style="width: 100%">
                 <select class="form-control" [(ngModel)]="config.path">
-                  <option value="1">我属什么的?</option>
-                  <option value="2">我喜欢吃什么?</option>
-                  <option value="3">古诗词填空</option>
-                  <option value="4">图片-爱你</option>
-                  <option value="5">图片-没结果</option>
-                  <option value="6">图片-少做梦</option>
-
+                  <option value="#/q-01">我属什么的?</option>
+                  <option value="#/q-02">我喜欢吃什么?</option>
+                  <option value="#/q-03">古诗词填空</option>
+                  <option value="#/aini">图片-爱你</option>
+                  <option value="#/mjg">图片-没结果</option>
+                  <option value="#/lagou">图片-拉钩钩</option>
+                  <option value="#/xingxing">拉钩-少做梦</option>
                 </select>
               </div>
             </div>
@@ -158,13 +159,35 @@
       </div>
     </div>
     </div>
+    <button class="btn btn-success" (click)="save()" *ngIf="!isSave">生成链接</button>
+
+    <div class="row form-group" *ngIf="isSave">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            链接信息:
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div style="margin-bottom: 10px">
+            <div class="row form-group">
+              <label class="control-label col-lg-1">链接地址:</label>
+              <div class="col-lg-4 col-md-6">
+                <input class="form-control" name="name" value="{{url_pre+id}}" readonly>
+              </div>
+            </div>
+            <div class="row form-group">
+              <label class="control-label col-lg-1">链接地址:</label>
+              <div class="col-lg-4 col-md-6">
+                {{url_pre+id}}
+              </div>
+            </div>
+            <button class="btn btn-success" (click)="go()">前往</button>
+        </div>
+      </div>
+    </div>
 
 
-
-
-
-
-
-    <button class="btn btn-success" (click)="save()">确认</button>
   </div>
 </div>
+

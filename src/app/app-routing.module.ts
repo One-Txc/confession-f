@@ -31,7 +31,7 @@ const routes: Routes = [
   {path: 'q-02', component: Question02Component},
   {path: 'q-03', component: Question03Component},
   {path: 'mjg', component: HahaComponent},
-  {path: 'ok', component: OkComponent},
+  {path: 'lagou', component: OkComponent},
   {path: 'aini', component: AnniComponent},
   {path: 'szm', component: OkComponent},
   {path: 'xingxing', component: XingxingComponent},

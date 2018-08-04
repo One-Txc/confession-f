@@ -3,6 +3,8 @@ import {ConfigService} from "../../../../service/config.service";
 import {validate} from "codelyzer/walkerFactory/walkerFn";
 import {StringUtil} from "../../../../util/string-util";
 import {isNullOrUndefined} from "util";
+import {Router} from "@angular/router";
+import {environment} from "../../../../../environments/environment";
 
 @Component({
   selector: 'app-config-add',
@@ -18,11 +20,15 @@ export class ConfigAddComponent implements OnInit {
     leftButtonText:"好啊",
     rightButtonText:"不好"
   };
-  public leftButtonPopupCofigList:any=[{type:"msg"}];
-  public rightButtonPopupCofigList:any=[{type:"msg"}];
+  public leftButtonPopupCofigList:any=[{type:"msg",groupType:"left",}];
+  public rightButtonPopupCofigList:any=[{type:"msg",groupType:"right",}];
 
+  public id;
+  public isSave:boolean = false;
+  public url_pre = environment.url+"#/home/";
 
-  constructor(private configService:ConfigService) { }
+  constructor(private configService:ConfigService,
+              public router: Router) { }
 
   ngOnInit() {
     this.initLeftButtonPopupCofigList();
@@ -39,6 +45,9 @@ export class ConfigAddComponent implements OnInit {
     });
   }
 
+  go(){
+    this.router.navigate(["home",this.id]);
+  }
 
   save(){
     var paramObj = {
@@ -51,10 +60,14 @@ export class ConfigAddComponent implements OnInit {
     if(!this.validateConfig(paramObj)){
       return;
     }
-    console.log(paramObj)
-    // this.configService.save(paramObj).subscribe((resultData)=>{
-    //   console.log(resultData)
-    // });
+    console.log(paramObj);
+    this.configService.save(paramObj).subscribe((resultData)=>{
+      console.log(resultData);
+      //进行页面跳转
+      this.id = resultData.resp;
+      //this.router.navigate(["home",configId]);
+      this.isSave = true;
+    });
   }
 
   private validateConfig(paramObj:any):Boolean{
@@ -112,12 +125,12 @@ export class ConfigAddComponent implements OnInit {
       return false;
     }
 
-    if(config.type=="0"){
+    if(config.type=="msg"){
       if(StringUtil.isBlank(config.content)){
         this.layer.msg(`${direction}按钮-第${index+1}次点击-提示文字-请填写`);
         return false;
       }
-    }else if(config.type=="1"){
+    }else if(config.type=="html"){
       if(StringUtil.isBlank(config.path)){
         this.layer.msg(`${direction}按钮-第${index+1}次点击-弹出问题-请选择`);
         return false;
@@ -138,11 +151,13 @@ export class ConfigAddComponent implements OnInit {
   addConfig(aaa:string){
     if(aaa=="left"){
       this.leftButtonPopupCofigList.push({
-        type:"0"
+        type:"msg",
+        groupType:"left",
       });
     }else if(aaa=="right"){
       this.rightButtonPopupCofigList.push({
-        type:"0"
+        type:"msg",
+        groupType:"right",
       });
     }
   }
@@ -161,43 +176,51 @@ export class ConfigAddComponent implements OnInit {
       {
         type:"msg",
         title:'',
-        content:"请你吃冰棒!"
+        content:"请你吃冰棒!",
+        groupType:"left"
       },
       {
         type:"msg",
         title:'',
-        content:"请你吃冰果冻!"
+        content:"请你吃冰果冻!",
+        groupType:"left"
       },
       {
         type:"msg",
         title:'',
-        content:"请你吃冰淇淋"
+        content:"请你吃冰淇淋",
+        groupType:"left"
       },
       {
         type:"msg",
         title:'',
-        content:"请你吃冰棒+冰果冻+冰淇淋"
+        content:"请你吃冰棒+冰果冻+冰淇淋",
+        groupType:"left"
       },
       {
         type:"html",
         title:'要不同意先答题!',
-        path:"q-01"
+        path:"#/q-01",
+        groupType:"left"
       },
       {
         type:"html",
         title:'再来一题!',
-        path:"q-02"
+        path:"#/q-02",
+        groupType:"left"
       },
       {
         type:"html",
         title:'还不放弃!',
-        path:"q-03"
+        path:"#/q-03",
+        groupType:"left"
       },
       {
         type:"msg",
         icon: 5,
         title:'',
-        content:"不同意不罢休"
+        content:"不同意不罢休",
+        groupType:"left"
       },
     ]
 
@@ -206,7 +229,14 @@ export class ConfigAddComponent implements OnInit {
   }
 
   initLeftButtonPopupCofigList(){
-
+    this.leftButtonPopupCofigList = [
+      {
+        type:"html",
+        title:'拉钩钩!',
+        path:"#/lagou",
+        groupType:"right"
+      }
+    ]
   }
 
 }

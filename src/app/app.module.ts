@@ -41,7 +41,7 @@ export function interceptorFactory(xhrBackend: XHRBackend, requestOptions: Reque
     XingxingComponent,
     ConfigAddComponent,
     MemoirsComponent,
-    AnniComponent
+    AnniComponent,
   ],
   imports: [
     CommonModule,

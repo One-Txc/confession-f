@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {isNullOrUndefined} from "util";
+import {ConfigService} from "../../../service/config.service";
 
 // declare var $: any;
 // declare var layui: any;
@@ -27,12 +28,22 @@ export class IndexComponent implements OnInit {
   public noList = [];
   public okList = [];
 
+  public mainConfig:any = {
+    leftButtonText:"好呀",
+    rightButtonText:"不好",
+  };
+
+
   constructor(public router: Router,
-              public activatedRoute: ActivatedRoute) {
+              public activatedRoute: ActivatedRoute,
+              private configService:ConfigService,) {
 
   }
 
   ngOnInit() {
+    this.initNoList();
+    this.initOkList();
+
     this.okCount = 0;
     this.noCount = 0;
 
@@ -64,8 +75,6 @@ export class IndexComponent implements OnInit {
        this.layer = layui.layer;
     });
 
-    this.initNoList();
-    this.initOkList();
   }
 
 
@@ -94,17 +103,17 @@ export class IndexComponent implements OnInit {
       {
           type:"html",
           title:'要不同意先答题!',
-          path:"q-01"
+          path:"#/q-01"
       },
       {
           type:"html",
           title:'再来一题!',
-          path:"q-02"
+          path:"#/q-02"
       },
       {
           type:"html",
           title:'还不放弃!',
-          path:"q-03"
+          path:"#/q-03"
       },
       {
         type:"msg",
@@ -120,7 +129,7 @@ export class IndexComponent implements OnInit {
       {
         type:"html",
         title:'拉钩钩!',
-        path:"ok"
+        path:"#/lagou"
       }
     ]
 
@@ -156,11 +165,14 @@ export class IndexComponent implements OnInit {
       }
     }else {
       popObj = {
-        closeBtn:0,
+        //closeBtn:0,
         title: popupConfig.title,
         type: 2,
         area: [bodydivSize+'px', bodydivSize+'px'],
         content: popupConfig.path,
+      }
+      if(popupConfig.path.indexOf("/q-") >= 0){
+        popObj.closeBtn = 0;
       }
     }
     return popObj;
@@ -226,6 +238,15 @@ export class IndexComponent implements OnInit {
   }
 
   private initDataWithId(id:any){
+    //查询
+    this.configService.get(id).subscribe((resultData)=>{
+      console.log(resultData);
+      this.mainConfig = resultData.mainConfig;
+      this.okList = resultData.leftButtonPopupCofigList;
+      this.noList = resultData.rightButtonPopupCofigList;
+      this.title = this.mainConfig.title;
+      this.question = this.mainConfig.question;
+    });
 
   }
   private initPageSize(){
