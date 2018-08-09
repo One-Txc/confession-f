@@ -1,12 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
+import {AppComponent} from './app.component';
+import {AppRoutingModule} from './app-routing.module';
 import {IndexComponent} from "./confession/home/index/index.component";
 import {ServiceURLInterceptor} from "./core/service-url.interceptor";
-import {RouterModule} from "@angular/router";
 import {HttpModule, RequestOptions, XHRBackend} from "@angular/http";
 import {CommonModule, HashLocationStrategy, LocationStrategy} from "@angular/common";
 import {Question01Component} from "./confession/home/question-01/question-01.component";

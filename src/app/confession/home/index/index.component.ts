@@ -17,7 +17,7 @@ export class IndexComponent implements OnInit {
   public title = "**************************";
   public question = "要不要一起去漫展啊?";
   public isDz = true;
-  public pictrueUrl = "/assets/img/hua.jpg";
+  public pictrueUrl = "assets/img/hua.jpg";
 
   public bodydivSize = 500;
   public w = window.innerWidth ;
