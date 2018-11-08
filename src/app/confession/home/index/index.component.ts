@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {isNullOrUndefined} from "util";
 import {ConfigService} from "../../../service/config.service";
+//import * as $ from 'jquery';
 
 // declare var $: any;
 // declare var layui: any;
