@@ -9,14 +9,14 @@ import {XingxingComponent} from "./xingxing/xingxing.component";
 
 
 export const popupRoutes: Routes = [
-  {path: 'aini', component: AnniComponent},
-  {path: 'mjg', component: HahaComponent},
-  {path: 'lagou', component: OkComponent},
-  {path: 'q-01', component: Question01Component},
-  {path: 'q-02', component: Question02Component},
-  {path: 'q-03', component: Question03Component},
-  {path: 'xingxing', component: XingxingComponent},
-  {path: 'szm', component: OkComponent},
+  // {path: 'aini', component: AnniComponent},
+  // {path: 'mjg', component: HahaComponent},
+  // {path: 'lagou', component: OkComponent},
+  // {path: 'q-01', component: Question01Component},
+  // {path: 'q-02', component: Question02Component},
+  // {path: 'q-03', component: Question03Component},
+  // {path: 'xingxing', component: XingxingComponent},
+  // {path: 'szm', component: OkComponent},
 
 
 ];
