@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {ConfigService} from "../../../../service/config.service";
-import {validate} from "codelyzer/walkerFactory/walkerFn";
 import {StringUtil} from "../../../../util/string-util";
 import {isNullOrUndefined} from "util";
 import {Router} from "@angular/router";
