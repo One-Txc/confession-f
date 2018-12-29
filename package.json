@@ -8,7 +8,7 @@
     "start-proxy": "ng serve --port 4288  --host 0.0.0.0 --proxy-config proxy.conf.json",
     "build": "ng build --aot",
     "build-uat": "ng build --environment=uat --aot",
-    "build-pro": "ng build --aot --prod",
+    "build-pro": "ng build --prod --build--optimizer",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
