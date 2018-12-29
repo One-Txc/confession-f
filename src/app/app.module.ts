@@ -19,6 +19,7 @@ import {ConfigAddComponent} from "./confession/home/config/config-add/config-add
 import {InterceptorService} from "ng2-interceptors";
 import {MemoirsComponent} from "./confession/home/memoirs/memoirs.component";
 import {AnniComponent} from "./confession/home/popup/anni/anni.component";
+import {PopupModule} from "./confession/home/popup/popup.module";
 
 
 export function interceptorFactory(xhrBackend: XHRBackend, requestOptions: RequestOptions) {
@@ -45,10 +46,12 @@ export function interceptorFactory(xhrBackend: XHRBackend, requestOptions: Reque
   imports: [
     CommonModule,
     HttpModule,
-    //RouterModule,
     BrowserModule,
+    FormsModule,
+
     AppRoutingModule,
-    FormsModule
+    PopupModule,
+
   ],
   providers: [
     ServiceURLInterceptor,ConfigService,
