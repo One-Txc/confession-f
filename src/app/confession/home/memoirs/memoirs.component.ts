@@ -63,6 +63,7 @@ export class MemoirsComponent implements OnInit {
             alert("程序正在准备自杀,电脑即将爆炸!");
             alert("正在启动自杀程序...");
             alert("..............");
+            alert("..............");
             alert("吓你的啦,我是好人");
           }
         });

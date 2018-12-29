@@ -8,7 +8,7 @@ angular 引用其他js/css方法
   apps.scripts中添加需要引用的js
   apps.styles中添加需要引用的css
 方法二
-  2.过npm方式
+  2.通过npm方式
 
 
 
@@ -72,7 +72,7 @@ jq的使用
   import * as $ from 'jquery';
   这样会有一个问题：Bootstrap's JavaScript requires jQuery
   如果使用bootstrap.js。它依赖jquery.js。所以bootstrap的引用也要用npm方式比较好
-  否则你要包装jquery.js先加载
+  否则你要保证jquery.js先加载
 
 
 
