@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  confessionUrlPrefix:"confession",
+  confessionUrlPrefix:"confession/",
   //url:"http://localhost:4288/",
   url:"http://111.230.142.95/confession/",
 };

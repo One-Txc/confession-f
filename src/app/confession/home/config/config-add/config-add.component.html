@@ -36,6 +36,12 @@
         <input class="form-control" name="name" [(ngModel)]="mainConfig.rightButtonText" type="text" placeholder="">
       </div>
     </div>
+    <div class="row form-group">
+      <label class="control-label col-lg-1">授权码</label>
+      <div class="col-lg-4 col-md-6">
+        <input class="form-control" name="name" [(ngModel)]="mainConfig.authorizationCode" type="text" placeholder="">
+      </div>
+    </div>
 
     <div class="row form-group">
     <div class="panel panel-default">
@@ -159,7 +165,7 @@
       </div>
     </div>
     </div>
-    <button class="btn btn-success" (click)="save()" *ngIf="!isSave">生成链接</button>
+    <button class="btn btn-success" (click)="save()" *ngIf="!isSave" style="position:fixed; bottom:0;">生成链接</button>
 
     <div class="row form-group" *ngIf="isSave">
       <div class="panel panel-default">

@@ -5,6 +5,8 @@ import {isNullOrUndefined} from "util";
 import {Router} from "@angular/router";
 import {environment} from "../../../../../environments/environment";
 
+declare var layui:any;
+
 @Component({
   selector: 'app-config-add',
   templateUrl: './config-add.component.html',
@@ -62,10 +64,19 @@ export class ConfigAddComponent implements OnInit {
     console.log(paramObj);
     this.configService.save(paramObj).subscribe((resultData)=>{
       console.log(resultData);
-      //进行页面跳转
-      this.id = resultData.resp;
-      //this.router.navigate(["home",configId]);
-      this.isSave = true;
+      if(resultData.status=="0000"){
+        //进行页面跳转
+        this.id = resultData.resp;
+        //this.router.navigate(["home",configId]);
+        this.isSave = true;
+      }else {
+        layui.use(['layer'], ()=>{
+          layui.layer.open({
+            title:"",
+            content:resultData.msg+""
+          });
+        });
+      }
     });
   }
 

@@ -11,13 +11,13 @@ export class ConfigService {
   }
 
   save(data: any): Observable<any> {
-    return this.http.post(environment.confessionUrlPrefix+"/mc/save",data).map((resp) => {
+    return this.http.post(environment.confessionUrlPrefix+"mc/save",data).map((resp) => {
       return resp.json();
     }).catch(this.handleError);
   }
 
   get(id: any): Observable<any> {
-    return this.http.get(environment.confessionUrlPrefix+"/mc/"+id).map((resp) => {
+    return this.http.get(environment.confessionUrlPrefix+"mc/"+id).map((resp) => {
       return resp.json();
     }).catch(this.handleError);
   }
