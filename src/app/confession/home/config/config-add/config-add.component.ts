@@ -26,6 +26,7 @@ export class ConfigAddComponent implements OnInit {
 
   public id;
   public isSave:boolean = false;
+  public isShowDetail:boolean = false;
   public url_pre = environment.url+"#/home/";
 
   constructor(private configService:ConfigService,
@@ -48,6 +49,10 @@ export class ConfigAddComponent implements OnInit {
 
   go(){
     this.router.navigate(["home",this.id]);
+  }
+
+  showDetail(){
+    this.isShowDetail = !this.isShowDetail;
   }
 
   save(){

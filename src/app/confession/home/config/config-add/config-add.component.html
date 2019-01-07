@@ -11,161 +11,164 @@
       <h3>勇敢的少年啊</h3>
     </div>
     <div class="row form-group">
-      <label class="control-label col-lg-1">上面的显示标题</label>
-      <div class="col-lg-4 col-md-6">
+      <label class="control-label col-lg-1">上面的标题</label>
+      <div class="col-lg-3 col-md-6">
         <input class="form-control" name="name" [(ngModel)]="mainConfig.title" type="text" placeholder="">
       </div>
     </div>
     <div class="row form-group">
       <label class="control-label col-lg-1">左边的问题</label>
-      <div class="col-lg-4 col-md-6">
+      <div class="col-lg-3 col-md-6">
         <input class="form-control" name="name" [(ngModel)]="mainConfig.question" type="text" placeholder="">
       </div>
     </div>
 
     <div class="row form-group">
-      <label class="control-label col-lg-1">左边按钮文字</label>
-      <div class="col-lg-4 col-md-6">
+      <label class="control-label col-lg-1">左边按钮</label>
+      <div class="col-lg-3 col-md-6">
         <input class="form-control" name="name" [(ngModel)]="mainConfig.leftButtonText" type="text" placeholder="">
       </div>
     </div>
 
     <div class="row form-group">
-      <label class="control-label col-lg-1">右边按钮文字</label>
-      <div class="col-lg-4 col-md-6">
+      <label class="control-label col-lg-1">右边按钮</label>
+      <div class="col-lg-3 col-md-6">
         <input class="form-control" name="name" [(ngModel)]="mainConfig.rightButtonText" type="text" placeholder="">
       </div>
     </div>
     <div class="row form-group">
       <label class="control-label col-lg-1">授权码</label>
-      <div class="col-lg-4 col-md-6">
+      <div class="col-lg-3 col-md-6">
         <input class="form-control" name="name" [(ngModel)]="mainConfig.authorizationCode" type="text" placeholder="">
       </div>
     </div>
 
-    <div class="row form-group">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">
-          左边按钮
-        </h3>
-      </div>
-      <div class="panel-body">
-        <div style="border-bottom-style:dotted;margin-bottom: 10px"
-             *ngFor="let config of leftButtonPopupCofigList; index as i;">
-          <span style="color: #18ce4b;">第{{i+1}}次点击</span>
-          <button class="btn btn-warning" style="float: right" (click)="delectConfig('left',i)">删除</button>
-          <div class="row form-group">
-            <label class="control-label col-lg-1">事件类型</label>
-            <div class="col-lg-4 col-md-6">
-              <div class="radio">
-                <label style="padding-right: 40px">
-                  <input type="radio" name="type-l-{{i}}" [(ngModel)]="config.type" value="msg">
-                  提示文字
-                </label>
-                <label>
-                  <input type="radio" name="type-l-{{i}}" [(ngModel)]="config.type" value="html">
-                  弹出问题
-                </label>
+    <button class="btn btn-success" (click)="showDetail()">详细配置设置</button>
+
+    <div id="collapseTwo" *ngIf="isShowDetail">
+      <div class="row form-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              左边按钮
+            </h3>
+          </div>
+          <div class="panel-body">
+            <div style="border-bottom-style:dotted;margin-bottom: 10px"
+                 *ngFor="let config of leftButtonPopupCofigList; index as i;">
+              <span style="color: #18ce4b;">第{{i+1}}次点击</span>
+              <button class="btn btn-warning" style="float: right" (click)="delectConfig('left',i)">删除</button>
+              <div class="row form-group">
+                <label class="control-label col-lg-1">事件类型</label>
+                <div class="col-lg-4 col-md-6">
+                  <div class="radio">
+                    <label style="padding-right: 40px">
+                      <input type="radio" name="type-l-{{i}}" [(ngModel)]="config.type" value="msg">
+                      提示文字
+                    </label>
+                    <label>
+                      <input type="radio" name="type-l-{{i}}" [(ngModel)]="config.type" value="html">
+                      弹出问题
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row form-group" *ngIf="config.type=='msg'">
+                <label class="control-label col-lg-1">提示文字</label>
+                <div class="col-lg-4 col-md-6">
+                  <input class="form-control" name="name" [(ngModel)]="config.content" type="text" placeholder="">
+                </div>
+              </div>
+              <div class="row form-group" *ngIf="config.type=='html'">
+                <label class="control-label col-lg-1">弹出标题</label>
+                <div class="col-lg-4 col-md-6">
+                  <input class="form-control" name="name" [(ngModel)]="config.title" type="text" placeholder="">
+                </div>
+              </div>
+              <div class="row form-group" *ngIf="config.type=='html'">
+                <label class="control-label col-lg-1">弹出提示</label>
+                <div class="col-lg-4 col-md-6">
+                  <div class="input-group" style="width: 100%">
+                    <select class="form-control" [(ngModel)]="config.path">
+                      <option value="#/q-01">我属什么的?</option>
+                      <option value="#/q-02">我喜欢吃什么?</option>
+                      <option value="#/q-03">古诗词填空</option>
+                      <option value="#/aini">图片-爱你</option>
+                      <option value="#/mjg">图片-没结果</option>
+                      <option value="#/lagou">图片-拉钩钩</option>
+                      <option value="#/xingxing">拉钩-少做梦</option>
+                    </select>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="row form-group" *ngIf="config.type=='msg'">
-            <label class="control-label col-lg-1">提示文字</label>
-            <div class="col-lg-4 col-md-6">
-              <input class="form-control" name="name" [(ngModel)]="config.content" type="text" placeholder="">
-            </div>
-          </div>
-          <div class="row form-group" *ngIf="config.type=='html'">
-            <label class="control-label col-lg-1">弹出标题</label>
-            <div class="col-lg-4 col-md-6">
-              <input class="form-control" name="name" [(ngModel)]="config.title" type="text" placeholder="">
-            </div>
-          </div>
-          <div class="row form-group" *ngIf="config.type=='html'">
-            <label class="control-label col-lg-1">弹出提示</label>
-            <div class="col-lg-4 col-md-6">
-              <div class="input-group" style="width: 100%">
-                <select class="form-control" [(ngModel)]="config.path">
-                  <option value="#/q-01">我属什么的?</option>
-                  <option value="#/q-02">我喜欢吃什么?</option>
-                  <option value="#/q-03">古诗词填空</option>
-                  <option value="#/aini">图片-爱你</option>
-                  <option value="#/mjg">图片-没结果</option>
-                  <option value="#/lagou">图片-拉钩钩</option>
-                  <option value="#/xingxing">拉钩-少做梦</option>
-                </select>
-              </div>
-            </div>
+            <button class="btn btn-success" (click)="addConfig('left')">添加点击次数</button>
           </div>
         </div>
-        <button class="btn btn-success" (click)="addConfig('left')">添加点击次数</button>
       </div>
-    </div>
-    </div>
-
-
-    <div class="row form-group">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">
-          右边按钮
-        </h3>
-      </div>
-      <div class="panel-body">
-        <div style="border-bottom-style:dotted;margin-bottom: 10px"
-             *ngFor="let config of rightButtonPopupCofigList; index as i;">
-          <span style="color: #18ce4b;">第{{i+1}}次点击</span>
-          <button class="btn btn-warning" style="float: right" (click)="delectConfig('right',i)">删除</button>
-          <div class="row form-group">
-            <label class="control-label col-lg-1">事件类型</label>
-            <div class="col-lg-4 col-md-6">
-              <div class="radio">
-                <label style="padding-right: 40px">
-                  <input type="radio" name="type-r-{{i}}" [(ngModel)]="config.type" value="msg">
-                  提示文字
-                </label>
-                <label>
-                  <input type="radio" name="type-r-{{i}}" [(ngModel)]="config.type" value="html">
-                  弹出问题
-                </label>
+      <div class="row form-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              右边按钮
+            </h3>
+          </div>
+          <div class="panel-body">
+            <div style="border-bottom-style:dotted;margin-bottom: 10px"
+                 *ngFor="let config of rightButtonPopupCofigList; index as i;">
+              <span style="color: #18ce4b;">第{{i+1}}次点击</span>
+              <button class="btn btn-warning" style="float: right" (click)="delectConfig('right',i)">删除</button>
+              <div class="row form-group">
+                <label class="control-label col-lg-1">事件类型</label>
+                <div class="col-lg-4 col-md-6">
+                  <div class="radio">
+                    <label style="padding-right: 40px">
+                      <input type="radio" name="type-r-{{i}}" [(ngModel)]="config.type" value="msg">
+                      提示文字
+                    </label>
+                    <label>
+                      <input type="radio" name="type-r-{{i}}" [(ngModel)]="config.type" value="html">
+                      弹出问题
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row form-group" *ngIf="config.type=='msg'">
+                <label class="control-label col-lg-1">提示文字</label>
+                <div class="col-lg-4 col-md-6">
+                  <input class="form-control" name="name" [(ngModel)]="config.content" type="text" placeholder="">
+                </div>
+              </div>
+              <div class="row form-group" *ngIf="config.type=='html'">
+                <label class="control-label col-lg-1">弹出标题</label>
+                <div class="col-lg-4 col-md-6">
+                  <input class="form-control" name="name" [(ngModel)]="config.title" type="text" placeholder="">
+                </div>
+              </div>
+              <div class="row form-group" *ngIf="config.type=='html'">
+                <label class="control-label col-lg-1">弹出提示</label>
+                <div class="col-lg-4 col-md-6">
+                  <div class="input-group" style="width: 100%">
+                    <select class="form-control" [(ngModel)]="config.path">
+                      <option value="#/q-01">我属什么的?</option>
+                      <option value="#/q-02">我喜欢吃什么?</option>
+                      <option value="#/q-03">古诗词填空</option>
+                      <option value="#/aini">图片-爱你</option>
+                      <option value="#/mjg">图片-没结果</option>
+                      <option value="#/lagou">图片-拉钩钩</option>
+                      <option value="#/xingxing">拉钩-少做梦</option>
+                    </select>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="row form-group" *ngIf="config.type=='msg'">
-            <label class="control-label col-lg-1">提示文字</label>
-            <div class="col-lg-4 col-md-6">
-              <input class="form-control" name="name" [(ngModel)]="config.content" type="text" placeholder="">
-            </div>
-          </div>
-          <div class="row form-group" *ngIf="config.type=='html'">
-            <label class="control-label col-lg-1">弹出标题</label>
-            <div class="col-lg-4 col-md-6">
-              <input class="form-control" name="name" [(ngModel)]="config.title" type="text" placeholder="">
-            </div>
-          </div>
-          <div class="row form-group" *ngIf="config.type=='html'">
-            <label class="control-label col-lg-1">弹出提示</label>
-            <div class="col-lg-4 col-md-6">
-              <div class="input-group" style="width: 100%">
-                <select class="form-control" [(ngModel)]="config.path">
-                  <option value="#/q-01">我属什么的?</option>
-                  <option value="#/q-02">我喜欢吃什么?</option>
-                  <option value="#/q-03">古诗词填空</option>
-                  <option value="#/aini">图片-爱你</option>
-                  <option value="#/mjg">图片-没结果</option>
-                  <option value="#/lagou">图片-拉钩钩</option>
-                  <option value="#/xingxing">拉钩-少做梦</option>
-                </select>
-              </div>
-            </div>
+            <button class="btn btn-success" (click)="addConfig('right')">添加点击次数</button>
           </div>
         </div>
-        <button class="btn btn-success" (click)="addConfig('right')">添加点击次数</button>
       </div>
     </div>
-    </div>
-    <button class="btn btn-success" (click)="save()" *ngIf="!isSave" style="position:fixed; bottom:0;">生成链接</button>
+
+    <button class="btn btn-primary" (click)="save()" *ngIf="!isSave" style="position:fixed; bottom:0;">生成链接</button>
 
     <div class="row form-group" *ngIf="isSave">
       <div class="panel panel-default">
@@ -196,4 +199,4 @@
 
   </div>
 </div>
-
+</div>
