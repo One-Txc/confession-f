@@ -1,0 +1,25 @@
+
+
+<div style="padding: 10px">
+  <button class="btn btn-success" (click)="changeSeeScope()">切换查看范围</button>查看范围:<font color="red"> {{seeScope==1?"所有":"赞过我的"}}</font>
+</div>
+
+<!-- 选项卡菜单-->
+<ul id="myTab" class="nav nav-tabs" role="tablist">
+  <li class="active"><a href="#bulletin" role="tab" data-toggle="tab">未赞</a></li>
+  <li><a href="#rule" role="tab" data-toggle="tab">已赞</a></li>
+  <li><a href="#forum" role="tab" data-toggle="tab">所有</a></li>
+</ul>
+
+<!-- 选项卡面板 -->
+<div id="myTabContent" class="tab-content">
+  <div class="tab-pane active" id="bulletin">
+
+    <a href="https://h5.izuiyou.com/hybrid/share/workPermitShare?oid=9825307">18299999</a>
+
+  </div>
+  <div class="tab-pane " id="rule">规则内容面板</div>
+  <div class="tab-pane " id="forum">论坛内容面板</div>
+</div>
+
+

@@ -10,6 +10,7 @@ import {Question01Component} from "./confession/home/question-01/question-01.com
 import {Question02Component} from "./confession/home/question-02/question-02.component";
 import {Question03Component} from "./confession/home/popup/question-03/question-03.component";
 import {XingxingComponent} from "./confession/home/popup/xingxing/xingxing.component";
+import {CollectZanComponent} from "./confession/collect-zan/collect-zan.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -26,6 +27,9 @@ const routes: Routes = [
   {path: 'q-03', component: Question03Component},
   {path: 'xingxing', component: XingxingComponent},
   {path: 'szm', component: OkComponent},
+
+
+  {path: 'collectZan', component: CollectZanComponent},
 
 ];
 

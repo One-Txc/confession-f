@@ -20,6 +20,7 @@ import {InterceptorService} from "ng2-interceptors";
 import {MemoirsComponent} from "./confession/home/memoirs/memoirs.component";
 import {AnniComponent} from "./confession/home/popup/anni/anni.component";
 import {PopupModule} from "./confession/home/popup/popup.module";
+import { CollectZanComponent } from './confession/collect-zan/collect-zan.component';
 
 
 export function interceptorFactory(xhrBackend: XHRBackend, requestOptions: RequestOptions) {
@@ -42,6 +43,7 @@ export function interceptorFactory(xhrBackend: XHRBackend, requestOptions: Reque
     ConfigAddComponent,
     MemoirsComponent,
     AnniComponent,
+    CollectZanComponent,
   ],
   imports: [
     CommonModule,
