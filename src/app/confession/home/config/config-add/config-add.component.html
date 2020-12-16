@@ -42,9 +42,17 @@
         <input class="form-control" name="name" [(ngModel)]="mainConfig.authorizationCode" type="text" placeholder="">
       </div>
     </div>
-
+    <button class="btn btn-success" (click)="getAuthorizationCode()">授权码获取</button>
     <button class="btn btn-success" (click)="showDetail()">详细配置设置</button>
+    <!--<button class="btn btn-success" (click)="showTemplate01CofigList()">模板一配置</button>-->
+    <!--<button class="btn btn-success" (click)="showTemplate02CofigList()">模板二配置</button>-->
+    <!--<button class="btn btn-success" (click)="hideDetail()">隐藏详细配置</button>-->
 
+
+
+    <div *ngIf="isShowDetail" style="margin: 10px">
+      <font color="red">以下为左右两边按钮点击的效果配置,可以不配置使用默认值,也可以自己配置弹出的文字标题等</font>
+    </div>
     <div id="collapseTwo" *ngIf="isShowDetail">
       <div class="row form-group">
         <div class="panel panel-default">
@@ -168,9 +176,10 @@
       </div>
     </div>
 
-    <button class="btn btn-primary" (click)="save()" *ngIf="!isSave" style="position:fixed; bottom:0;">生成链接</button>
+    <button class="btn btn-primary" (click)="save()" *ngIf="!isSave" style="position:fixed;left: 50px; bottom:0;">生成链接</button>
 
     <div class="row form-group" *ngIf="isSave">
+      <!--<div class="row form-group">-->
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">
@@ -191,10 +200,21 @@
                 {{url_pre+id}}
               </div>
             </div>
+            <div class="row form-group">
+              <label class="control-label col-lg-2">地址二维码(qq微信都可以扫码)[手机可能会对二维码下载进行拦截请截图保存]</label>
+              <div class="col-lg-4">
+                <qrcode id="qrcode" [size]="300" [colordark]="'#ff00ff'" [colorlight]="'#0bff2b'" [qrdata]="url_pre+id" [size]="128" [level]="'Q'" [usesvg]="false"></qrcode>
+              </div>
+            </div>
             <button class="btn btn-success" (click)="go()">前往</button>
+            <button class="btn" (click)="downQrcode()">下载二维码</button>
         </div>
       </div>
     </div>
+
+
+<div>
+</div>
 
 
   </div>

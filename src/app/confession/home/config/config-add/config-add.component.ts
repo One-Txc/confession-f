@@ -5,7 +5,12 @@ import {isNullOrUndefined} from "util";
 import {Router} from "@angular/router";
 import {environment} from "../../../../../environments/environment";
 
+// import {saveSvgAsPng} from "save-svg-as-png"
+
 declare var layui:any;
+
+declare var saveSvgAsPng:any;
+
 
 @Component({
   selector: 'app-config-add',
@@ -39,6 +44,9 @@ export class ConfigAddComponent implements OnInit {
       'background-color': '#f5f5f5'
     });
     this.initLayui();
+
+    // this.downQrcode();
+
   }
 
   protected initLayui(){
@@ -51,9 +59,31 @@ export class ConfigAddComponent implements OnInit {
     this.router.navigate(["home",this.id]);
   }
 
+  getAuthorizationCode(){
+    layui.use(['layer'], ()=>{
+      layui.layer.open({
+        title:"",
+        content:"授权码填:9999"
+      });
+    });
+  }
+
   showDetail(){
     this.isShowDetail = !this.isShowDetail;
   }
+
+  showTemplate01CofigList(){
+    this.isShowDetail = true;
+    this.initTemplate01CofigList();
+  }
+  showTemplate02CofigList(){
+    this.isShowDetail = true;
+    this.initTemplate02CofigList();
+  }
+  hideDetail(){
+    this.isShowDetail = false;
+  }
+
 
   save(){
     var paramObj = {
@@ -239,8 +269,6 @@ export class ConfigAddComponent implements OnInit {
       },
     ]
 
-
-
   }
 
   initLeftButtonPopupCofigList(){
@@ -253,5 +281,149 @@ export class ConfigAddComponent implements OnInit {
       }
     ]
   }
+
+
+  /**
+   * 模板一
+   * 看电影
+   */
+  initTemplate01CofigList(){
+    this.rightButtonPopupCofigList = [
+      {
+        type:"msg",
+        title:'',
+        content:"请你吃冰棒!",
+        groupType:"left"
+      },
+      {
+        type:"msg",
+        title:'',
+        content:"请你吃冰果冻!",
+        groupType:"left"
+      },
+      {
+        type:"msg",
+        title:'',
+        content:"请你吃冰淇淋",
+        groupType:"left"
+      },
+      {
+        type:"msg",
+        title:'',
+        content:"请你吃冰棒+冰果冻+冰淇淋",
+        groupType:"left"
+      },
+      {
+        type:"html",
+        title:'要不同意先答题!',
+        path:"#/q-01",
+        groupType:"left"
+      },
+      {
+        type:"html",
+        title:'再来一题!',
+        path:"#/q-02",
+        groupType:"left"
+      },
+      {
+        type:"html",
+        title:'还不放弃!',
+        path:"#/q-03",
+        groupType:"left"
+      },
+      {
+        type:"msg",
+        icon: 5,
+        title:'',
+        content:"不同意不罢休",
+        groupType:"left"
+      },
+    ];
+    this.leftButtonPopupCofigList = [
+      {
+        type:"html",
+        title:'拉钩钩!',
+        path:"#/lagou",
+        groupType:"right"
+      }
+    ]
+
+  }
+
+
+  /**
+   * 模板二
+   * 保大-保小-房产证写你的名字
+   */
+  initTemplate02CofigList(){
+    this.rightButtonPopupCofigList = [
+      {
+        type:"msg",
+        title:'',
+        content:"保大!",
+        groupType:"left"
+      },
+      {
+        type:"msg",
+        title:'',
+        content:"我妈会游泳!",
+        groupType:"left"
+      },
+      {
+        type:"msg",
+        title:'',
+        content:"房产证写你的名字",
+        groupType:"left"
+      },
+      {
+        type:"msg",
+        title:'',
+        content:"还有一颗爱你的心",
+        groupType:"left"
+      },
+      {
+        type:"html",
+        title:'要不同意先答题!',
+        path:"#/q-01",
+        groupType:"left"
+      },
+      {
+        type:"html",
+        title:'再来一题!',
+        path:"#/q-02",
+        groupType:"left"
+      },
+      {
+        type:"html",
+        title:'还不放弃!',
+        path:"#/q-03",
+        groupType:"left"
+      },
+      {
+        type:"msg",
+        icon: 5,
+        title:'',
+        content:"不同意不罢休",
+        groupType:"left"
+      },
+    ];
+    this.leftButtonPopupCofigList = [
+      {
+        type:"html",
+        title:'拉钩钩!',
+        path:"#/lagou",
+        groupType:"right"
+      }
+    ]
+  }
+
+  downQrcode(){
+    var image = $('#qrcode img')[0];
+    var a = document.createElement('a');
+    a.href = image.src;  //将画布内的信息导出为png图片数据
+    a.download = ""+this.id;  //设定下载名称
+    a.click(); //点击触发下载
+  }
+
 
 }

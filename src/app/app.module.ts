@@ -21,6 +21,7 @@ import {MemoirsComponent} from "./confession/home/memoirs/memoirs.component";
 import {AnniComponent} from "./confession/home/popup/anni/anni.component";
 import {PopupModule} from "./confession/home/popup/popup.module";
 import { CollectZanComponent } from './confession/collect-zan/collect-zan.component';
+import { QRCodeModule } from 'angularx-qrcode';
 
 
 export function interceptorFactory(xhrBackend: XHRBackend, requestOptions: RequestOptions) {
@@ -50,7 +51,7 @@ export function interceptorFactory(xhrBackend: XHRBackend, requestOptions: Reque
     HttpModule,
     BrowserModule,
     FormsModule,
-
+    QRCodeModule,
     AppRoutingModule,
     PopupModule,
 

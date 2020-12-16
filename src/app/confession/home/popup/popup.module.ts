@@ -5,6 +5,7 @@ import {popupRoutes} from "./popup-routes";
 import {HttpModule} from "@angular/http";
 import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
+import { QrcodeComponent } from './qrcode/qrcode.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import {FormsModule} from "@angular/forms";
     FormsModule,
     RouterModule.forChild(popupRoutes)
   ],
-  declarations: []
+  declarations: [QrcodeComponent]
 })
 export class PopupModule { }

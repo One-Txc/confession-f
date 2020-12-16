@@ -2,10 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {isNullOrUndefined} from "util";
 import {ConfigService} from "../../../service/config.service";
-//import * as $ from 'jquery';
-
-// declare var $: any;
-// declare var layui: any;
 
 @Component({
   selector: 'app-index',
@@ -15,7 +11,7 @@ import {ConfigService} from "../../../service/config.service";
 export class IndexComponent implements OnInit {
   private layer:any;
   public isPc:Boolean = true;
-  public title = "**************************";
+  public title = "*******蕾姆同学********";
   public question = "要不要一起去漫展啊?";
   public isDz = true;
   public pictrueUrl = "assets/img/hua.jpg";
@@ -75,6 +71,8 @@ export class IndexComponent implements OnInit {
     layui.use(['layer', 'form'], ()=>{
        this.layer = layui.layer;
     });
+
+    this.xxx();
 
   }
 
@@ -230,7 +228,6 @@ export class IndexComponent implements OnInit {
         var layer = layui.layer;
         layui.layer.open({
           // title: '我发四',
-          // content: '由于小哥哥最近吃了太多狗粮,所以强势求女友呀,发过一个交友帖，走过路过不要错过呀!'
           // content: '体验了你确定不给我一个赞和好评吗!'
           content: '手机端也已经可以啦!'
         });
@@ -242,11 +239,20 @@ export class IndexComponent implements OnInit {
     //查询
     this.configService.get(id).subscribe((resultData)=>{
       console.log(resultData);
-      this.mainConfig = resultData.mainConfig;
-      this.okList = resultData.leftButtonPopupCofigList;
-      this.noList = resultData.rightButtonPopupCofigList;
-      this.title = this.mainConfig.title;
-      this.question = this.mainConfig.question;
+      if(resultData.status=="8888"){
+        layui.use(['layer'], ()=>{
+          layui.layer.open({
+            title:"",
+            content:"配置加载失败"
+          });
+        });
+      }else {
+        this.mainConfig = resultData.mainConfig;
+        this.okList = resultData.leftButtonPopupCofigList;
+        this.noList = resultData.rightButtonPopupCofigList;
+        this.title = this.mainConfig.title;
+        this.question = this.mainConfig.question;
+      }
     });
 
   }
@@ -305,6 +311,40 @@ export class IndexComponent implements OnInit {
       }
     }
     return flag;
+  }
+
+  xxx(){
+    /* 鼠标特效 */
+    var a_idx = 0;
+    $("body").click(function(e) {
+      var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善");
+      var $i = $("<span/>").text(a[a_idx]);
+      a_idx = (a_idx + 1) % a.length;
+      var x = e.pageX, y = e.pageY;
+
+      var color = "";
+      for (var i = 0; i < 6; i++) {
+        color += (Math.random() * 16 | 0).toString(16);
+      }
+      // console.log(color+"");
+      $i.css({
+        "z-index": 999999999999999999999999999999999999999999999999999999999999999999999,
+        "top": y - 20,
+        "left": x,
+        "position": "absolute",
+        "font-weight": "bold",
+        "color": "#" + color
+      });
+      $("body").append($i);
+      $i.animate({
+          "top": y - 180,
+          "opacity": 0
+        },
+        1500,
+        function() {
+          $i.remove();
+        });
+    });
   }
 
 }
